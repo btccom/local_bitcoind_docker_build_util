@@ -1,9 +1,17 @@
-Docker for Bitcoin-abc v0.16.1
+Docker for local built bitcoind
 ============================
+
+This setup based on docker setup in https://github.com/btccom/btcpool
+
+create.py is python script to generate docker image base on the local bitcoind
+[Options]
+* --repo [reponame]. Set the docker image repo name. Default name bitcoind_local
+* --tag [tag]. Set the docker image tag. Default is random string
+* --sourcedir [bitcoind directory location]. Copy bitcoind from specified directory. if not specified, it will use ./
+* --use-installed. Copy bitcoind based on `which bitcoind`
 
 * OS: `Ubuntu 14.04 LTS`, `Ubuntu 16.04 LTS`
 * Docker Image OS: `Ubuntu 16.04 LTS`
-* Bitcoin ABC: `v0.16.1`
 
 ## Install Docker
 
@@ -16,20 +24,21 @@ service docker start
 service docker status
 ```
 
+
 ## Build Docker Images
+Build your bitcoind project like usual
+
+Install python
+
+#examples
+create.py 
+create.py --sourcedir src/
+create.py --repo btc --tag latest --use-installed
+
+## Running docker image
 
 ```
 cd /work
-
-git clone git@github.com:btccom/btcpool.git
-cd btcpool/docker/bitcoin-abc/v0.16.1
-
-# If your server is in China, please check "Dockerfile" and uncomment some lines.
-# If you want to enable testnet, please uncomment several lines behind `# service for testnet`
-
-# build
-docker build -t bitcoin-abc:0.16.1 .
-# docker build --no-cache -t bitcoin-abc:0.16.1 .
 
 # mkdir for bitcoin-abc
 mkdir -p /work/bitcoin-abc
