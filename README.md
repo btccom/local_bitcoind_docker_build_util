@@ -26,6 +26,7 @@ service docker status
 
 
 ## Build Docker Images
+```
 Build your bitcoind project like usual
 
 Install python
@@ -34,6 +35,7 @@ Install python
 create.py 
 create.py --sourcedir src/
 create.py --repo btc --tag latest --use-installed
+```
 
 ## Running docker image
 
